@@ -1,8 +1,9 @@
-[200~module JK_trigger_tb;
+`timescale 1ns / 10ps
+module syncRStrigger_test;
     // дамп файла для GtkWave
     initial begin
-        $dumpfile("JK_trigger_sim.vcd");
-        $dumpvars(0, JK_trigger_tb);
+        $dumpfile("syncRStrigger_sim.vcd");
+        $dumpvars(0, syncRStrigger_test);
     end
     
     // тактовый сигнал
@@ -10,20 +11,20 @@
     always #5 clk = !clk;
 
     // входные сигналы
-    reg J = 0;
-    always #7 J = !J;
-    reg K = 0;
-    always #6 K = !K;
+    reg R = 0;
+    always #7 R = !R;
+    reg S = 0;
+    always #6 S = !S;
 
     // выходные сигналы
     wire Q, nQ;
 
     // подключаем модуль
-    JK_trigger T1(J, K, clk, Q, nQ);
+    syncRStrigger T1(R, S, clk, Q, nQ);
 
     // отслеживание сигналов
     initial begin
         $monitor("At time %t, out1=%b, out2=%b", $time, Q, nQ);
         #500 $finish;
     end
-endmodule // JK_trigger_tb
+endmodule // syncRStrigger_test

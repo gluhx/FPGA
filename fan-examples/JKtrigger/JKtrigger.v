@@ -1,4 +1,4 @@
-module JK_trigger(J, K, clk, Q, nQ);
+module JKtrigger(J, K, clk, Q, nQ);
     // объявляем входы
     input J, K, clk;
 
@@ -15,4 +15,4 @@ module JK_trigger(J, K, clk, Q, nQ);
         Q <= tmp_Q;
         nQ <= !tmp_Q;
     end
-endmodule // JK_trigger
+endmodule // JKtrigger

@@ -1,36 +1,52 @@
-module mod3(
+module mod3 (
     input clk,
     input in,
     input start,
     input finish,
-    output reg out = 0
+    output reg out,
+    output reg has_result
 );
 
-    // Внутренние регистры
-    reg [1:0] mod = 2'b00;  // 2-битный регистр для хранения остатка от деления на 3
-    reg active = 0;         // Флаг активности обработки
-    
-    always @(posedge clk) begin
-        if (start) begin
-            // Начало передачи - сброс состояния
-            mod <= 2'b00;
-            active <= 1'b1;
-            out <= 1'b0;
-        end
-        else if (finish && active) begin
-            // Конец передачи - проверка результата
-            active <= 1'b0;
-            out <= (mod == 2'b00) ? 1'b1 : 1'b0;
-        end
-        else if (active) begin
-            // Обработка очередного бита
-            case (mod)
-                2'b00: mod <= (in == 1'b1) ? 2'b01 : 2'b00;
-                2'b01: mod <= (in == 1'b1) ? 2'b11 : 2'b10;
-                2'b10: mod <= (in == 1'b1) ? 2'b00 : 2'b01;
-                2'b11: mod <= (in == 1'b1) ? 2'b10 : 2'b11;
-            endcase
-        end
+reg is_transition_going = 1'b0;
+reg [1:0] inter_value = 2'b0;
+reg is_current_bit_odd = 1'b0;
+reg has_result_delay = 1'b0;
+
+always @ (posedge clk) begin
+    if(has_result_delay) begin
+        out <= (inter_value == 2'b00) ? 1 : 0;
+    end else out <= 0;
+    has_result <= has_result_delay;
+    if(start) begin
+        is_transition_going <= 1'b1;
+        inter_value <= 2'b0;
+        is_current_bit_odd <= 1'b0;
+        has_result_delay <= 1'b0;
+        has_result <= 1'b0;
+        out <= 1'b0;
+    end else if (finish) begin
+        is_transition_going <= 1'b0;
+        has_result_delay <= 1'b1;
     end
 
-endmodule
+    if(is_transition_going) begin
+        if(is_current_bit_odd) begin
+            if (inter_value == 2'b10 && in) inter_value <= 2'b00;
+            else begin
+                inter_value <= inter_value + (
+                    (in) ? 2'b01 : 2'b00
+                 );
+             end
+        end else begin
+             if (inter_value == 2'b00 && in) inter_value <= 2'b10;
+             else begin
+                 inter_value <= inter_value - (
+                     (in) ? 2'b01 : 2'b00
+                 );
+             end
+         end
+         is_current_bit_odd <= ~is_current_bit_odd;
+        end
+    end
+    endmodule // mod3
+

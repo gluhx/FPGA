@@ -12,7 +12,7 @@ module filter_test;
     reg clk = 0;
     always #5 clk = !clk;
     
-    reg [7:0] x = 0;
+    reg [31:0] x = 0;
 
 
     always @(negedge clk) begin
@@ -24,23 +24,21 @@ module filter_test;
         #191 reset <= 1'b0;
     end
     
-    reg enable = 1'b1;
     
     // подключаем и задаём выходные сигналы
-    wire [7:0] out;
+    wire [31:0] out;
 
     // подключаем модуль
     filter FILT(
         .clk(clk), 
         .reset(reset),
-        .enable(enable),
         .x(x),
         .y(out)
     );
 
     // отслеживание сигналов
     initial begin
-        $monitor("At time %t, reset : %b, en : %b, in : %b, out %b", $time, reset, enable, x, out);
+        $monitor("At time %t, reset : %b, in : %b, out %b", $time, reset, x, out);
         #300 $finish;
     end
 

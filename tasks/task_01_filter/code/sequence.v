@@ -5,19 +5,20 @@ module sequence(
     input clk,
     input reset,
     input enable_start,
-    input [7:0] x_n,
-    input [7:0] x_n_1,
-    output [7:0] y
+    input [31:0] x_n,
+    input [31:0] x_n_1,
+    output reg [31:0] y = 32'b0
 );
 
 // объявляем и задаём постоянные
-parameter [7:0] a = 8'b10;
-parameter [7:0] b = 8'b11;
-parameter [7:0] aa = a * a;
-parameter [7:0] ab = a * b;
+parameter [31:0] a = 32'b10;
+parameter [31:0] b = 32'b11;
+parameter [31:0] aa = a * a;
+parameter [31:0] ab = a * b;
 
 //объявляем и задаём служебные сигналы
-wire [2:0][7:0] mult_result;
+wire [2:0][31:0] mult_result;
+wire [31:0] temp_y;
 
 //подключаем модуль для расчёта a**2 * y_n-2
 mult_2t MULT_AAY(
@@ -25,7 +26,7 @@ mult_2t MULT_AAY(
     .reset(reset),
     .enable(enable_start),
     .multipliable_1(aa),
-    .multipliable_2(y),
+    .multipliable_2(temp_y),
     .mult_result(mult_result[0])
 );
 
@@ -49,6 +50,12 @@ mult_2t MULT_BX(
     .mult_result(mult_result[2])
 );
 
-assign y = mult_result[0] + mult_result[1] + mult_result[2];
+assign temp_y = mult_result[0] + mult_result[1] + mult_result[2];
+
+always @(posedge clk or negedge reset) begin 
+    //проверяем reset
+    if (!reset) y <= 32'b0;
+    else y <= temp_y;
+end
 
 endmodule // sequence

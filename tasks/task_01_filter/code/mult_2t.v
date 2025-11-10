@@ -3,17 +3,17 @@ module mult_2t (
     input clk,
     input reset,
     input enable,
-    input [7:0] multipliable_1,
-    input [7:0] multipliable_2,
-    output reg [7:0] mult_result = 8'b0
+    input [31:0] multipliable_1,
+    input [31:0] multipliable_2,
+    output reg [31:0] mult_result = 32'b0
 );
-    reg [31:0] mult_delay = 8'b0;
+    reg [31:0] mult_delay = 32'b0;
 
     always @(posedge clk or negedge reset) begin
         // проверяем reset
         if (!reset) begin
-            mult_delay <= 0;
-            mult_result <= 0;
+            mult_delay <= 32'b0;
+            mult_result <= 32'b0;
         end else begin
             // проверяем сигнал разрешения
             if (enable) begin

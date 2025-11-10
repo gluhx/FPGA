@@ -12,7 +12,7 @@ module mult_2t_test;
     reg clk = 0;
     always #5 clk = !clk;
     
-    reg [7:0] x = 0;
+    reg [31:0] x = 32'b0;
 
     always @(posedge clk) begin
        x <= x + 1;
@@ -29,7 +29,7 @@ module mult_2t_test;
         #20 enable <= 1'b1;
     end
     // подключаем и задаём выходные сигналы
-    wire [7:0] out;
+    wire [31:0] out;
 
     // подключаем модуль
     mult_2t MULT(

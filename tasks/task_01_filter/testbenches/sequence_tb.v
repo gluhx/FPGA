@@ -12,8 +12,8 @@ module sequence_test;
     reg clk = 0;
     always #5 clk = !clk;
     
-    reg [7:0] x = 1;
-    wire [7:0] x_n_1;
+    reg [31:0] x = 1;
+    wire [31:0] x_n_1;
 
     assign x_n_1 = x - 1;
 
@@ -32,7 +32,7 @@ module sequence_test;
         #20 enable <= 1'b1;
     end
     // подключаем и задаём выходные сигналы
-    wire [7:0] out;
+    wire [31:0] out;
 
     // подключаем модуль
     sequence SEQ(

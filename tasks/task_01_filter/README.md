@@ -57,24 +57,24 @@
 
 ## Структура проекта
 
-+filter                                 - папка проекта
-|   - code                              - папка с файлами с verilog кодом
-|   |   - filter.v                      - файл с кодом модуля filter
-|   |   - mult_2t.v                     - файл с кодом модуля mult_2t
-|   |   - sequence.v                    - файл с кодом модуля sequence
-|   - simulation                        - папка с результатами симуляций
-|   |   - files                         - папка с файлами симуляций
-|   |   |   - filter_dsn                - файл с симуляцией
-|   |   |   - filter_simulation.vcd     - файл с симуляцией для gtkwave
-|   |   |   - mult_2t_dsn               - файл с симуляцией
-|   |   |   - mult_2t_simulation.vcd    - файл с симуляцией для gtkwave
-|   |   |   - sequence_dsn              - файл с симуляцией 
-|   |   |   - sequence_simulation.vcd   - файл с симуляцией для gtkwave
-|   |   - images                        - папка с временными диаграммами
-|   |   |   - filter.jpg                - временная диаграмма модуля filter
-|   |   |   - mult_2t.jpg               - временная диаграмма модуля mult_2t
-|   |   |   - sequence.lpg              - временная даиграмма модуля sequence
-|   - testbenches                       - папка с testbench
-|   |   - filter_tb.v                   - testbench для модуля filter
-|   |   - mult_2t_tb.v                  - testbench для модуля mult_2t
-|   |   - sequence_tb.v                 - testbench для модуля sequence
+>filter                       - папка проекта
+>>code                        - папка с файлами с verilog кодом
+>>>filter.v                   - файл с кодом модуля filter
+>>>mult_2t.v                  - файл с кодом модуля mult_2t
+>>>sequence.v                 - файл с кодом модуля sequence
+>>simulation                  - папка с результатами симуляций
+>>>files                      - папка с файлами симуляций
+>>>>filter_dsn                - файл с симуляцией
+>>>>filter_simulation.vcd     - файл с симуляцией для gtkwave
+>>>>mult_2t_dsn               - файл с симуляцией
+>>>>mult_2t_simulation.vcd    - файл с симуляцией для gtkwave
+>>>>sequence_dsn              - файл с симуляцией 
+>>>>sequence_simulation.vcd   - файл с симуляцией для gtkwave
+>>>images                     - папка с временными диаграммами
+>>>>filter.jpg                - временная диаграмма модуля filter
+>>>>mult_2t.jpg               - временная диаграмма модуля mult_2t
+>>>>sequence.lpg              - временная даиграмма модуля sequence
+>>testbenches                 - папка с testbench
+>>>filter_tb.v                - testbench для модуля filter
+>>>mult_2t_tb.v               - testbench для модуля mult_2t
+>>>sequence_tb.v              - testbench для модуля sequence

@@ -46,12 +46,17 @@
 ## Структура проекта
 
 > SPI                           - корневая папка проекта
+>
 >> code                         - папка с файлами с кодом
+>>
 >>> SPI_master.v                - файл с кодом модуля SPI Master
 >>>
 >>> SPI_slave.v                 - файл с кодом модуля SPI Slave
+>>
 >> simulation                   - папка с результатами симуляции
+>>
 >>> files                       - папка с файлами симуляции
+>>>
 >>>> SPI_master_dsn             - файл симуляции модуля SPI Master
 >>>>
 >>>> SPI_master_simulation.vcd  - файл симуляции для GTKWAVE модуля SPI Master
@@ -59,13 +64,17 @@
 >>>> SPI_slave_dsn              - файл симуляции содкля SPI Slave
 >>>>
 >>>> SPI_slave_simulation.vcd   - файл симуляции для GTKWAVE модуля SPI Slave
+>>>
 >>> images                      - папка с изображениями временных диаграмм
+>>>
 >>>> SPI_master.jpg             - временная диаграмма модуля SPI Master
 >>>>
 >>>> SPI_slave_v1.jpg           - временная диаграмма непрерывной передачи модуля SPI Slave
 >>>>
 >>>> SPI_slave_v2.jpg           - временная диаграмма прерываемой передачи модуля SPI Slave
+>>
 >> testbenches                  - папка с testbench
+>>
 >>> SPI_master_tb.v             - testbench для модуля SPI Master
 >>>
 >>> SPI_slave_tb.v              - testbench для модуля SPI Slave

@@ -10,7 +10,8 @@ module SPI_master(
 
 // объявляем и задаём слкжебные регистры
 reg [7:0] memory = 8'b0;
-reg flag_transit =1'b0;
+reg flag_transit = 1'b0;
+reg flag_sck = 1'b0;
 reg [2:0] counter_bit = 3'b111;
 
 always @(posedge clk or negedge reset) begin
@@ -30,9 +31,14 @@ always @(posedge clk or negedge reset) begin
             sck <= 1'b0;
             mosi <= 1'b0;
             memory <= data;
+            flag_sck <= 1'b1;
         end else begin
+            if ((flag_transit) && (!flag_sck)) begin
+                flag_transit <= 1'b0;
+                sck <= 1'b0;
+            end
             // если установлен флаг, начинаем тактировать sck
-            if (flag_transit) begin
+            if (flag_sck) begin
                 sck <= ~sck;
                 // начинаем передачу
                 if (!sck) begin
@@ -40,11 +46,12 @@ always @(posedge clk or negedge reset) begin
 
                     //проверяем счётчик бита
                     if (counter_bit == 3'b0) begin
-                        flag_transit <= 1'b0;
+                        flag_sck <= 1'b0;
                         counter_bit <= 3'b111;
                     end else counter_bit <= counter_bit - 1;
                 end
-            end else begin
+            end  
+            if (!flag_transit) begin
                 sck <= 1'b1;
                 mosi <=1'b1;
                 cs <= 1'b1;

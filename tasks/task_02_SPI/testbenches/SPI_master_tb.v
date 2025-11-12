@@ -22,7 +22,7 @@ reg en = 1'b0;
 initial begin
     #19 en = 1'b1;
     #10 en = 1'b0;
-    #110 en = 1'b1;
+    #310 en = 1'b1;
     #10 en = 1'b0;
 end
 

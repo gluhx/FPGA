@@ -1,0 +1,59 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib64/ivl/system.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib64/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib64/ivl/va_math.vpi";
+S_0x60962a64e490 .scope module, "XOR_test" "XOR_test" 2 4;
+ .timescale -11 -12;
+P_0x60962a64e620 .param/l "CELL_SIZE" 0 2 12, +C4<00000000000000000000000000001000>;
+v0x60962a65ffe0_0 .net "out", 7 0, L_0x60962a6602a0;  1 drivers
+v0x60962a6600d0_0 .var "x1", 7 0;
+v0x60962a6601a0_0 .var "x2", 7 0;
+S_0x60962a64e6c0 .scope module, "DD1" "XOR" 2 27, 3 1 0, S_0x60962a64e490;
+ .timescale -11 -12;
+    .port_info 0 /INPUT 8 "in_1";
+    .port_info 1 /INPUT 8 "in_2";
+    .port_info 2 /OUTPUT 8 "out";
+P_0x60962a64d330 .param/l "WIDTH" 0 3 2, +C4<00000000000000000000000000001000>;
+L_0x60962a6602a0 .functor XOR 8, v0x60962a6600d0_0, v0x60962a6601a0_0, C4<00000000>, C4<00000000>;
+v0x60962a63b990_0 .net "in_1", 7 0, v0x60962a6600d0_0;  1 drivers
+v0x60962a65fdc0_0 .net "in_2", 7 0, v0x60962a6601a0_0;  1 drivers
+v0x60962a65fea0_0 .net "out", 7 0, L_0x60962a6602a0;  alias, 1 drivers
+    .scope S_0x60962a64e490;
+T_0 ;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0x60962a6600d0_0, 0, 8;
+    %pushi/vec4 85, 0, 8;
+    %store/vec4 v0x60962a6601a0_0, 0, 8;
+    %end;
+    .thread T_0;
+    .scope S_0x60962a64e490;
+T_1 ;
+    %vpi_call 2 7 "$dumpfile", "XOR_simulation.vcd" {0 0 0};
+    %vpi_call 2 8 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x60962a64e490 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x60962a64e490;
+T_2 ;
+    %delay 200, 0;
+    %pushi/vec4 170, 0, 8;
+    %store/vec4 v0x60962a6601a0_0, 0, 8;
+    %end;
+    .thread T_2;
+    .scope S_0x60962a64e490;
+T_3 ;
+    %vpi_call 2 35 "$monitor", "At time %t, , in : %b, %b, out %b", $time, v0x60962a6600d0_0, v0x60962a6601a0_0, v0x60962a65ffe0_0 {0 0 0};
+    %delay 400, 0;
+    %vpi_call 2 36 "$finish" {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbenches/XOR_tb.v";
+    "code/XOR.v";

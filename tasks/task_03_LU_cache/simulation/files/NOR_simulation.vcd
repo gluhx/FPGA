@@ -1,0 +1,96 @@
+$date
+	Mon Dec  1 23:58:19 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module NOR_test $end
+$var wire 1 ! out $end
+$var parameter 32 " CELL_SIZE $end
+$var reg 3 # x [2:0] $end
+$scope module DD1 $end
+$var wire 3 $ in [2:0] $end
+$var wire 1 ! out $end
+$var parameter 32 % WIDTH $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 %
+b11 "
+$end
+#0
+$dumpvars
+b0 $
+b0 #
+1!
+$end
+#20
+0!
+b1 #
+b1 $
+#40
+b10 #
+b10 $
+#60
+b11 #
+b11 $
+#80
+b100 #
+b100 $
+#100
+b101 #
+b101 $
+#120
+b110 #
+b110 $
+#140
+b111 #
+b111 $
+#160
+1!
+b0 #
+b0 $
+#180
+0!
+b1 #
+b1 $
+#200
+b10 #
+b10 $
+#220
+b11 #
+b11 $
+#240
+b100 #
+b100 $
+#260
+b101 #
+b101 $
+#280
+b110 #
+b110 $
+#300
+b111 #
+b111 $
+#320
+1!
+b0 #
+b0 $
+#340
+0!
+b1 #
+b1 $
+#360
+b10 #
+b10 $
+#380
+b11 #
+b11 $
+#400
+b100 #
+b100 $

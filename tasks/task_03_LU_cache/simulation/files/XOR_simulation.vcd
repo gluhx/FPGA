@@ -1,0 +1,42 @@
+$date
+	Mon Dec  1 23:57:07 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module XOR_test $end
+$var wire 8 ! out [7:0] $end
+$var parameter 32 " CELL_SIZE $end
+$var reg 8 # x1 [7:0] $end
+$var reg 8 $ x2 [7:0] $end
+$scope module DD1 $end
+$var wire 8 % in_1 [7:0] $end
+$var wire 8 & in_2 [7:0] $end
+$var wire 8 ' out [7:0] $end
+$var parameter 32 ( WIDTH $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 (
+b1000 "
+$end
+#0
+$dumpvars
+b1010101 '
+b1010101 &
+b0 %
+b1010101 $
+b0 #
+b1010101 !
+$end
+#200
+b10101010 !
+b10101010 '
+b10101010 $
+b10101010 &
+#400

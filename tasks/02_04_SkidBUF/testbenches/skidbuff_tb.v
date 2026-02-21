@@ -50,20 +50,19 @@ initial begin
     // Инициализация
     $display("=== НАЧАЛО ТЕСТИРОВАНИЯ ===");
     #10 reset = 1'b1;
-    #20 reset = 1'b0;
-    #10 s_ready = 1'b1; // Slave готов к приему
+    #10 s_ready = 1'b0; // Slave готов к приему
     
     // ============ ПАКЕТ 1: Полное прохождение без прерываний ============
     $display("\n=== ПАКЕТ 1: Нормальная передача, s_ready всегда = 1 ===");
     
     // Байт 1.1
-    #10 m_data = 8'h11; m_valid = 1'b1; m_last = 1'b0;
+    #10 m_data = 8'h11; m_valid = 1'b1; m_last = 1'b0; s_ready = 1'b1;
     #10;
     
     // Байт 1.2
-    m_data = 8'h22; m_valid = 1'b1; m_last = 1'b0;
+    m_data = 8'h22; m_valid = 1'b1; m_last = 1'b0; s_ready = 1'b0;
+    #10 s_ready = 1'b1;
     #10;
-    
     // Байт 1.3
     m_data = 8'h33; m_valid = 1'b1; m_last = 1'b0;
     #10;

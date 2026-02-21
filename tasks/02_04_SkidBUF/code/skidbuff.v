@@ -31,14 +31,14 @@ always @(posedge clk or negedge reset) begin
         s_data <= 8'b0;
         s_valid <= 1'b0;
         s_last <= 1'b0;
-        STATE = 1'b0;
+        STATE <= 1'b0;
     end else begin
         
         //проверяем состояние текущее
         if (STATE == 1'b0) begin
             
             //проверяем ситуацию, где мы должны переключиться в другой режим
-            if ((m_ready == 1'b1) && (m_valid == 1'b1) && (s_valid == 1'b1) && (s_ready == 1'b0)) begin
+            if ((m_ready == 1'b1) && (s_ready == 1'b0)) begin
                 //запоминаем данные
                 mem_data <= m_data;
                 mem_last <= m_last;

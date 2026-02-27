@@ -13,8 +13,7 @@ module AXI_master(
 
 //буфер для хранения не более 8 байт данных
 reg [63:0] data_buff = 64'b0;
-reg [2:0] buff_count = 3'b0;
-reg [2:0] i = 3'b0;
+reg [3:0] buff_count = 3'b0;
 
 //флаг наличия рукопожатия
 wire flag_handshake;
@@ -29,14 +28,14 @@ assign valid = (buff_count > 0) & (~we);
 always @(posedge clk or negedge reset_n) begin 
     if(~reset_n) begin 
         data_buff <= 64'b0;
-        buff_count <= 3'b0;
+        buff_count <= 4'b0;
     end else begin
         if (we) begin 
             data_buff <= data_in;
-            buff_count <= 3'b111;
+            buff_count <= 4'b1001;
         end
         if (flag_handshake & (buff_count > 0)) begin
-            data_buff <= {data_buff[55:0], 8'b0};
+            if(buff_count > 1) data_buff <= {8'b0, data_buff[63:8]};
             buff_count <= buff_count - 1;
         end
     end       
@@ -49,11 +48,14 @@ always @(posedge clk or negedge reset_n) begin
         last <= 1'b0;
     end else 
         if(flag_handshake) begin
-            if(buff_count == 1) last <= 1'b1;
+            if(buff_count == 2) last <= 1'b1;
             else last <= 1'b0;
             data <= data_buff[7:0];
-        end else last <= 1'b0;
+        end else begin 
+            last <= 1'b0;
+            data <= 8'b0;
+        end
 end
 
-endmodule // AXI-master
+endmodule
         

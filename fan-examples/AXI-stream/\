@@ -4,7 +4,7 @@ module AXI_slave(
     input [7:0] data,
     input valid,
     input last,
-    output ready,
+    output reg ready,
     //выход для данных
     output reg [7:0] data_out,
     //сигнал остановки чтения
@@ -18,7 +18,9 @@ wire flag_handshake;
 assign flag_handshake = ready & valid;
 
 //завязываем valid на запись и счётчик
-assign ready = ~stop & reset_n;
+always @(posedge clk or negedge reset_n) begin
+    ready = ~stop & reset_n;
+end
 
 always @(posedge clk or negedge reset_n) begin
     if(~reset_n) 

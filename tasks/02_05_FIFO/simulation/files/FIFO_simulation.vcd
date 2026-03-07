@@ -1,0 +1,712 @@
+$date
+	Fri Mar  6 17:58:10 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module FIFO_test $end
+$var wire 8 ! debug_mem_0 [7:0] $end
+$var wire 8 " debug_mem_1 [7:0] $end
+$var wire 8 # debug_mem_2 [7:0] $end
+$var wire 8 $ debug_mem_3 [7:0] $end
+$var wire 1 % wr_en $end
+$var wire 1 & rd_en $end
+$var wire 1 ' full $end
+$var wire 1 ( empty $end
+$var wire 8 ) dout [7:0] $end
+$var wire 8 * din [7:0] $end
+$var wire 8 + data_out [7:0] $end
+$var parameter 32 , ADDR_WIDTH $end
+$var parameter 32 - BUFFER_LENGTH $end
+$var parameter 32 . DATA_WIDTH $end
+$var parameter 32 / DEPTH_FIFO $end
+$var parameter 64 0 TEST_PACKET $end
+$var reg 1 1 a_reset_n $end
+$var reg 64 2 data_in [63:0] $end
+$var reg 1 3 last_empty_state $end
+$var reg 1 4 rd_clk $end
+$var reg 1 5 stop $end
+$var reg 1 6 we $end
+$var reg 1 7 wr_clk $end
+$var integer 32 8 packet_counter [31:0] $end
+$scope function pack_data $end
+$var reg 8 9 b0 [7:0] $end
+$var reg 8 : b1 [7:0] $end
+$var reg 8 ; b2 [7:0] $end
+$var reg 8 < b3 [7:0] $end
+$var reg 8 = b4 [7:0] $end
+$var reg 8 > b5 [7:0] $end
+$var reg 8 ? b6 [7:0] $end
+$var reg 8 @ b7 [7:0] $end
+$upscope $end
+$scope module fifo_inst $end
+$var wire 1 A FIFO_FULL $end
+$var wire 1 B FIFO_NEXT_FULL $end
+$var wire 1 1 a_reset_n $end
+$var wire 1 4 rd_clk $end
+$var wire 1 7 wr_clk $end
+$var wire 3 C write_ptr_prev_gray [2:0] $end
+$var wire 3 D write_ptr_gray [2:0] $end
+$var wire 1 % wr_en $end
+$var wire 3 E read_ptr_prev_gray [2:0] $end
+$var wire 3 F read_ptr_gray [2:0] $end
+$var wire 1 & rd_en $end
+$var wire 8 G din [7:0] $end
+$var wire 1 H FIFO_NEXT_EMPTY $end
+$var wire 1 I FIFO_EMPTY $end
+$var parameter 32 J ADDR_WIDTH $end
+$var parameter 32 K DATA_WIDTH $end
+$var parameter 32 L DEPTH_FIFO $end
+$var reg 8 M dout [7:0] $end
+$var reg 1 ( empty $end
+$var reg 1 ' full $end
+$var reg 3 N read_ptr_bin [2:0] $end
+$var reg 3 O read_ptr_gray_sync_1 [2:0] $end
+$var reg 3 P read_ptr_gray_sync_2 [2:0] $end
+$var reg 3 Q read_ptr_prev_gray_sync_1 [2:0] $end
+$var reg 3 R read_ptr_prev_gray_sync_2 [2:0] $end
+$var reg 3 S write_ptr_bin [2:0] $end
+$var reg 3 T write_ptr_gray_sync_1 [2:0] $end
+$var reg 3 U write_ptr_gray_sync_2 [2:0] $end
+$var reg 3 V write_ptr_prev_gray_sync_1 [2:0] $end
+$var reg 3 W write_ptr_prev_gray_sync_2 [2:0] $end
+$var integer 32 X i [31:0] $end
+$scope function bin_to_gray $end
+$var reg 3 Y bin [2:0] $end
+$upscope $end
+$upscope $end
+$scope module read_agent_inst $end
+$var wire 1 1 a_reset_n $end
+$var wire 1 4 clk $end
+$var wire 8 Z dout [7:0] $end
+$var wire 1 ( empty $end
+$var wire 1 [ handshake $end
+$var wire 1 5 stop $end
+$var parameter 32 \ DATA_WIDTH $end
+$var reg 8 ] data_out [7:0] $end
+$var reg 1 & rd_en $end
+$upscope $end
+$scope module write_agent_inst $end
+$var wire 1 1 a_reset_n $end
+$var wire 1 7 clk $end
+$var wire 64 ^ data_in [63:0] $end
+$var wire 1 ' full $end
+$var wire 1 6 we $end
+$var parameter 32 _ BUFFER_LENGTH $end
+$var parameter 32 ` DATA_WIDTH $end
+$var reg 1 a buffer_loaded $end
+$var reg 64 b data_buff [63:0] $end
+$var reg 8 c din [7:0] $end
+$var reg 4 d rd_ptr [3:0] $end
+$var reg 1 % wr_en $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 `
+b1000 _
+b1000 \
+b100 L
+b1000 K
+b10 J
+b100000000111000001100000010100000100000000110000001000000001 0
+b100 /
+b1000 .
+b1000 -
+b10 ,
+$end
+#0
+$dumpvars
+b0 d
+b0 c
+b0 b
+0a
+b0 ^
+b0 ]
+0[
+b0 Z
+b111 Y
+b100 X
+b111 W
+b111 V
+b0 U
+b0 T
+b0 S
+b111 R
+b111 Q
+b0 P
+b0 O
+b0 N
+b0 M
+1I
+0H
+b0 G
+b0 F
+b100 E
+b0 D
+b100 C
+0B
+0A
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+b0 8
+07
+06
+05
+04
+13
+b0 2
+01
+b0 +
+b0 *
+b0 )
+1(
+0'
+0&
+0%
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#50
+b100 X
+17
+#100
+07
+14
+#150
+b100 X
+17
+#200
+07
+04
+#250
+b100 X
+17
+#300
+07
+14
+#350
+b100 X
+17
+#400
+07
+04
+11
+#450
+b100 V
+17
+#500
+b100 Q
+07
+14
+#550
+b100 W
+17
+#600
+07
+04
+16
+b100000000111000001100000010100000100000000110000001000000001 2
+b100000000111000001100000010100000100000000110000001000000001 ^
+#650
+1a
+b100000000111000001100000010100000100000000110000001000000001 b
+17
+#700
+b100 R
+07
+14
+#750
+17
+#800
+07
+04
+b1 8
+06
+#850
+b1 d
+b1 *
+b1 G
+b1 c
+1%
+17
+#900
+07
+14
+#950
+b0 C
+b1 D
+b0 Y
+b1 S
+b1 !
+b10 d
+b10 *
+b10 G
+b10 c
+17
+#1000
+07
+04
+#1050
+b1 C
+b11 D
+b1 Y
+b11 d
+b11 *
+b11 G
+b11 c
+b10 "
+b0 V
+b1 T
+b10 S
+17
+#1100
+07
+14
+#1150
+1B
+b11 C
+b10 D
+b10 Y
+1H
+b0 W
+b1 V
+0I
+b1 U
+b11 T
+b11 S
+b11 #
+b100 d
+b100 *
+b100 G
+b100 c
+17
+#1200
+07
+04
+#1250
+1A
+0B
+b10 C
+b110 D
+b11 Y
+b101 d
+b101 *
+b101 G
+b101 c
+b100 $
+1'
+0H
+b1 W
+b11 V
+b11 U
+b10 T
+b100 S
+17
+#1300
+0(
+07
+14
+#1350
+b11 W
+b10 V
+b10 U
+b110 T
+0%
+b100 d
+17
+#1400
+07
+04
+#1450
+b10 W
+b110 U
+17
+#1500
+1[
+1&
+03
+07
+14
+#1550
+17
+#1600
+07
+04
+#1650
+17
+#1700
+b0 E
+b1 F
+b0 Y
+b1 )
+b1 M
+b1 Z
+b1 N
+07
+14
+#1750
+17
+#1800
+07
+04
+#1850
+17
+#1900
+b1 E
+b11 F
+b1 Y
+b0 Q
+b1 O
+b10 N
+b10 )
+b10 M
+b10 Z
+b1 +
+b1 ]
+07
+14
+#1950
+17
+#2000
+07
+04
+#2050
+17
+#2100
+1B
+0A
+b11 E
+1H
+b10 F
+b10 Y
+b10 +
+b10 ]
+b11 )
+b11 M
+b11 Z
+b0 R
+b1 Q
+b1 P
+b11 O
+b11 N
+07
+14
+#2150
+0'
+17
+#2200
+07
+04
+#2250
+b101 d
+1%
+17
+#2300
+0B
+b10 E
+1I
+0H
+b110 F
+b11 Y
+b1 R
+b11 Q
+b11 P
+b10 O
+b100 N
+b100 )
+b100 M
+b100 Z
+b11 +
+b11 ]
+07
+14
+#2350
+1B
+b110 C
+b111 D
+b100 Y
+b101 S
+b101 !
+b110 d
+b110 *
+b110 G
+b110 c
+17
+#2400
+07
+04
+#2450
+1A
+0B
+b111 C
+b101 D
+b101 Y
+b111 d
+b111 *
+b111 G
+b111 c
+b110 "
+1'
+b110 V
+b111 T
+b110 S
+17
+#2500
+1B
+0A
+b110 E
+b100 Y
+0[
+0I
+b111 F
+b100 +
+b100 ]
+b101 )
+b101 M
+b101 Z
+1(
+b11 R
+b10 Q
+b10 P
+b110 O
+b101 N
+07
+14
+#2550
+b110 W
+b111 V
+1I
+b111 U
+b101 T
+0%
+b110 d
+17
+#2600
+07
+04
+#2650
+0'
+1H
+b111 W
+0I
+b101 U
+17
+#2700
+0B
+b10 R
+b110 Q
+b110 P
+b111 O
+0(
+0&
+b0 +
+b0 ]
+13
+07
+14
+#2750
+1%
+b111 d
+17
+#2800
+07
+04
+#2850
+1B
+b101 C
+b100 D
+b110 Y
+0a
+b0 d
+b1000 *
+b1000 G
+b1000 c
+b111 #
+b111 S
+17
+#2900
+0B
+1[
+1&
+b110 R
+b111 P
+03
+07
+14
+#2950
+1B
+b100 C
+b0 D
+b111 Y
+b101 V
+b100 T
+b0 S
+b1000 $
+0%
+17
+#3000
+07
+04
+#3050
+0H
+b101 W
+b100 V
+b100 U
+b0 T
+17
+#3100
+b111 E
+1H
+b101 F
+b101 Y
+b110 N
+b110 )
+b110 M
+b110 Z
+b101 +
+b101 ]
+07
+14
+#3150
+0H
+b100 W
+b0 U
+17
+#3200
+07
+04
+#3250
+17
+#3300
+b101 E
+1H
+b100 F
+b110 Y
+b110 +
+b110 ]
+b111 )
+b111 M
+b111 Z
+b111 Q
+b101 O
+b111 N
+07
+14
+#3350
+17
+#3400
+07
+04
+#3450
+17
+#3500
+0B
+b100 E
+1I
+0H
+b0 F
+b111 Y
+b111 R
+b101 Q
+b101 P
+b100 O
+b0 N
+b1000 )
+b1000 M
+b1000 Z
+b111 +
+b111 ]
+07
+14
+#3550
+17
+#3600
+07
+04
+#3650
+17
+#3700
+b0 E
+0[
+0I
+b1 F
+b0 Y
+b1000 +
+b1000 ]
+b101 )
+b101 M
+b101 Z
+1(
+b101 R
+b100 Q
+b100 P
+b0 O
+b1 N
+07
+14
+#3750
+17
+#3800
+07
+04
+#3850
+17
+#3900
+b100 R
+b0 Q
+b0 P
+b1 O
+0(
+0&
+b0 +
+b0 ]
+13
+07
+14
+#3950
+17
+#4000
+07
+04
+#4050
+17
+#4100
+1[
+1&
+b0 R
+b1 P
+03
+07
+14
+#4150
+17
+#4200
+07
+04
+#4250
+17
+#4300
+b1 E
+b11 F
+b1 Y
+b10 N
+b110 )
+b110 M
+b110 Z
+b101 +
+b101 ]
+07
+14
